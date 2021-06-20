@@ -1,11 +1,12 @@
+/* eslint-disable no-use-before-define */
 import { constants } from './constants';
 
 // eslint-disable-next-line import/prefer-default-export
 export const numberConverterToWord = (number) => {
   const word = '';
-  // eslint-disable-next-line no-use-before-define
-  convertRecursion(number, word);
-  return word;
+  // eslint-disable-next-line prefer-const
+  const convertedWord = convertRecursion(number, word);
+  return convertedWord;
 };
 function convertRecursion(number, wordNeedsExtension) {
   let newWord = wordNeedsExtension;
