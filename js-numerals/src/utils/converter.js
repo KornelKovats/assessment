@@ -1,4 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const converter = (number) => {
-
-};
+export const converter = () => 'asd';
