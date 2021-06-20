@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import * as constants from '../utils/constants';
+import { constants } from '../utils/constants';
+import { numberConverterToWord } from '../utils/converter';
 
 export default {
   name: 'NumberConverter',
@@ -25,7 +26,7 @@ export default {
   methods: {
     convertToWord() {
       if (this.number !== null) {
-        this.numberInWord = this.number;
+        this.numberInWord = numberConverterToWord(this.number);
       }
     },
   },
