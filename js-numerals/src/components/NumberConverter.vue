@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>{{ msg }}</h1>
-    <input type="text" v-model="number" placeholder="Enter your number here" required/>
+    <input type="number" v-model="number" placeholder="Enter your number here" required/>
     <button @click="convertToWord">Convert</button>
     <p>{{ "Your number in words: " + numberInWord }}</p>
   </section>
@@ -38,6 +38,12 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+input{
+    width: 80%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
 }
 button{
   color: #494949 !important;
