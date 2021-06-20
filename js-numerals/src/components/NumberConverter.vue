@@ -26,7 +26,7 @@ export default {
   methods: {
     convertToWord() {
       if (this.number !== null) {
-        this.numberInWord = numberConverterToWord(this.number);
+        this.numberInWord = numberConverterToWord(parseInt(this.number, 10));
       }
     },
   },
@@ -59,7 +59,7 @@ button{
 }
 button:hover {
   color: #6692c6 !important;
-  border-radius: 50px;
+  border-radius: 10px;
   border-color: #6692c6 !important;
   transition: all 0.3s ease 0s;
 }
