@@ -18,7 +18,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,0) 0%, rgba(148,187,233,1) 100%);
 }
 </style>

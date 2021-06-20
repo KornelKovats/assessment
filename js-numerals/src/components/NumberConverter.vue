@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>{{ msg }}</h1>
-    <input type="text" v-model="number" placeholder="Enter your number here"/>
+    <input type="text" v-model="number" placeholder="Enter your number here" required/>
     <button @click="convertToWord">Convert</button>
     <p>{{ "Your number in words: " + numberInWord }}</p>
   </section>
@@ -24,7 +24,9 @@ export default {
   },
   methods: {
     convertToWord() {
-      this.numberInWord = this.number;
+      if (this.number !== null) {
+        this.numberInWord = this.number;
+      }
     },
   },
 };
@@ -40,12 +42,18 @@ section {
 button{
   color: #494949 !important;
   text-transform: uppercase;
-  text-decoration: none;
   background: #ffffff;
+  margin-top: 20px;
   padding: 20px;
-  margin: 20px;
   border: 4px solid #494949 !important;
+  border-radius: 6px;
   display: inline-block;
-  transition: all 0.4s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+button:hover {
+  color: #6692c6 !important;
+  border-radius: 50px;
+  border-color: #6692c6 !important;
+  transition: all 0.3s ease 0s;
 }
 </style>
