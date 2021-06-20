@@ -2,25 +2,22 @@
 import { constants } from './constants';
 
 // eslint-disable-next-line import/prefer-default-export
-export const numberConverterToWord = (number) => {
-  const word = '';
-  // eslint-disable-next-line prefer-const
-  const convertedWord = convertRecursion(number, word);
-  return convertedWord;
-};
-function convertRecursion(number, wordNeedsExtension) {
+export const numberConverterToWord = (number, wordNeedsExtension) => {
   let newWord = wordNeedsExtension;
-  let underNumber;
-  constants.forEach((element) => {
-    if (number === element.number) {
-      newWord += `${element.txt} ${wordNeedsExtension}`;
+  let underNumber = constants[0].number;
+  const ifThereisWord = wordNeedsExtension || 0;
+
+  for (let i = 0; i < constants.length; i += 1) {
+    if (number === constants[i].number) {
+      newWord += `${constants[i].txt} ${ifThereisWord}`;
+      break;
     }
-    if (element.number / number < 1 && number !== element.number) {
-      underNumber = element.number;
+    if (constants[i].number / number < 1 && number !== constants[i].number) {
+      underNumber = constants[i].number;
     }
-    if (element.number / number > 1 && number !== element.number) {
-      convertRecursion(Math.floor(number / underNumber), newWord);
+    if (constants[i].number / number > 1 && number !== constants[i].number) {
+      newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(number / Math.floor(number / underNumber))}`;
     }
-  });
+  }
   return newWord;
-}
+};
