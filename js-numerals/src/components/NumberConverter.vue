@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <input type="number" v-model="number" placeholder="Enter your number here" required/>
     <button @click="convertToWord">Convert</button>
-    <p>{{ "Your number in words: " + numberInWord }}</p>
+    <p>{{ "Your number in word(s): " + numberInWord }}</p>
   </section>
 </template>
 
