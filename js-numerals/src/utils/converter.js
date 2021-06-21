@@ -20,10 +20,11 @@ export const numberConverterToWord = (number) => {
     }
     if (constants[i].number / number > 1 && number !== constants[i].number
          && greaterThanHoundred(number)) {
-      if (getRemainder(number, underNumber) === 0) {
+      const remainder = getRemainder(number, underNumber);
+      if (remainder === 0) {
         newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(underNumber)}`;
       } else {
-        newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(underNumber)} ${numberConverterToWord(getRemainder(number, underNumber))}`;
+        newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(underNumber)} ${numberConverterToWord(remainder)}`;
       }
     }
   }
