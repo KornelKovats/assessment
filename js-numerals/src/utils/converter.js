@@ -1,30 +1,31 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 import { constants } from './constants';
 
 // eslint-disable-next-line import/prefer-default-export
-export const numberConverterToWord = (number) => {
+export const numberConverterToWord = (num) => {
   let newWord = '';
   let underNumber = constants[0].number;
 
-  for (let i = 0; i < constants.length; i += 1) {
-    if (number === constants[i].number) {
-      newWord = `${constants[i].txt}`;
+  for (const { number, txt } of constants) {
+    if (num === number) {
+      newWord = `${txt}`;
       break;
     }
-    if (constants[i].number / number < 1 && number !== constants[i].number) {
-      underNumber = constants[i].number;
+    if (number / num < 1 && num !== number) {
+      underNumber = number;
     }
-    if (constants[i].number / number > 1 && number !== constants[i].number
-        && betweenTwentyAndHoundred(number)) {
-      newWord = `${numberConverterToWord(underNumber)}-${numberConverterToWord(number - underNumber)}`;
+    if (number / num > 1 && num !== number
+        && betweenTwentyAndHoundred(num)) {
+      newWord = `${numberConverterToWord(underNumber)}-${numberConverterToWord(num - underNumber)}`;
     }
-    if (constants[i].number / number > 1 && number !== constants[i].number
-         && greaterThanHoundred(number)) {
-      const remainder = getRemainder(number, underNumber);
+    if (number / num > 1 && num !== number
+         && greaterThanHoundred(num)) {
+      const remainder = getRemainder(num, underNumber);
       if (remainder === 0) {
-        newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(underNumber)}`;
+        newWord = `${numberConverterToWord(Math.floor(num / underNumber))} ${numberConverterToWord(underNumber)}`;
       } else {
-        newWord = `${numberConverterToWord(Math.floor(number / underNumber))} ${numberConverterToWord(underNumber)} ${numberConverterToWord(remainder)}`;
+        newWord = `${numberConverterToWord(Math.floor(num / underNumber))} ${numberConverterToWord(underNumber)} ${numberConverterToWord(remainder)}`;
       }
     }
   }
