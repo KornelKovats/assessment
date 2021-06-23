@@ -3,12 +3,16 @@ import { constants } from './constants';
 export const convertion = {
   numberToWords(number) {
     let word = '';
+    const absNumber = Math.abs(number);
     if (number === 0) {
       return 'zero';
     }
-    if (number.toString().length === 4) word = this.getForDigitWord(number);
-    if (number.toString().length !== 4) word = this.convertNumberToWord(number);
-    return word;
+    if (number.toString().length === 4) {
+      word = this.getForDigitWord(absNumber);
+    } else {
+      word = this.convertNumberToWord(absNumber);
+    }
+    return (number < 0) ? `minus ${word}` : word;
   },
   convertNumberToWord(numberToConvert) {
     let newWord = '';
