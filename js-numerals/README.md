@@ -15,18 +15,14 @@ For example:
 
 Note: Numbers greater than 100 and less than 1000 always include the word "and" between the hundreds figure and the other part, numbers greater than 1000 include "and" between any hundreds figure and the figure less than 100.
 
-# Solution
+# App
 
+url(running in a docker container): https://kornelkovats-numerals.azurewebsites.net/
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run start
 ```
-
-### Compiles and minifies for production
+### Test
 ```
-npm run build
+npm run test
 ```
