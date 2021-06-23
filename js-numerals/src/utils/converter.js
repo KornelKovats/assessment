@@ -34,13 +34,13 @@ export const convertion = {
       if (number > numberToConvert) break;
     }
 
-    if (this.betweenTwentyAndHoundred(numberToConvert)) {
+    if (this.betweenTwentyAndHundred(numberToConvert)) {
       const counter = smallerNumberWord;
       const convertedRemainder = this.convertNumberToWord(remainder);
       newWord = `${counter}-${convertedRemainder}`;
     }
 
-    if (this.greaterThanHoundred(numberToConvert)) {
+    if (this.greaterThanHundred(numberToConvert)) {
       const summoner = this.convertNumberToWord(Math.floor(numberToConvert / smallerNumber));
       const counter = smallerNumberWord;
       const convertedRemainder = this.convertNumberToWord(remainder);
@@ -61,17 +61,17 @@ export const convertion = {
     const remainder = number - counter * 100;
     const houndreds = Object.keys(constants).find((key) => constants[key] === counter);
     if (!remainder && counter > 10 && counter < 20) {
-      return `${houndreds} houndred`;
+      return `${houndreds} hundred`;
     }
     if (remainder && counter > 10 && counter < 20) {
-      return `${houndreds} houndred and ${this.convertNumberToWord(remainder)}`;
+      return `${houndreds} hundred and ${this.convertNumberToWord(remainder)}`;
     }
     return this.convertNumberToWord(number);
   },
-  greaterThanHoundred(number) {
+  greaterThanHundred(number) {
     return number > 99;
   },
-  betweenTwentyAndHoundred(number) {
+  betweenTwentyAndHundred(number) {
     return number > 20 && number < 100;
   },
   getRemainder(minuend, subtrahend) {

@@ -2,7 +2,7 @@ import { convertion } from '../../src/utils/converter';
 
 describe('NumberConverter.vue', () => {
   it('Check for zero', () => {
-    //expect(convertion.numberToWords(0)).toMatch('zero');
+    expect(convertion.numberToWords(0)).toMatch('zero');
   });
   it('Check for one digit', () =>{
     expect(convertion.numberToWords(1)).toMatch('one');
@@ -36,8 +36,15 @@ describe('NumberConverter.vue', () => {
     expect(convertion.numberToWords(200)).toMatch('two hundred');
     expect(convertion.numberToWords(300)).toMatch('three hundred');
   });
-  it('check for bug', () =>{
-    expect(convertion.numberToWords(10300)).toMatch('ten thousand three hundred');
-    expect(convertion.numberToWords(1300420)).toMatch('one million three hundred thousand four hundred and twenty');
+  it('Check for three digits', () =>{
+    expect(convertion.numberToWords(101)).toMatch('one hundred and one');
+    expect(convertion.numberToWords(202)).toMatch('two hundred and two');
+    expect(convertion.numberToWords(111)).toMatch('one hundred and eleven');
+    expect(convertion.numberToWords(120)).toMatch('one hundred and twenty');
+  });
+  it('Check for four digits', () =>{
+    expect(convertion.numberToWords(1001)).toMatch('one thousand and one');
+    expect(convertion.numberToWords(1201)).toMatch('twelve hundred and one');
+    expect(convertion.numberToWords(1212)).toMatch('twelve hundred and twelve');
   });
 });
