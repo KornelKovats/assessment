@@ -3,6 +3,9 @@ import { constants } from './constants';
 export const convertion = {
   numberToWords(number) {
     let word = '';
+    if (number === 0) {
+      return 'zero';
+    }
     if (number.toString().length === 4) word = this.getForDigitWord(number);
     if (number.toString().length !== 4) word = this.convertNumberToWord(number);
     return word;
