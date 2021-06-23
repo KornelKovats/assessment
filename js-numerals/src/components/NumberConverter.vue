@@ -9,7 +9,7 @@
 
 <script>
 import { constants } from '../utils/constants';
-import { numberConverterToWord } from '../utils/converter';
+import { convertion } from '../utils/converter';
 
 export default {
   name: 'NumberConverter',
@@ -26,7 +26,7 @@ export default {
   methods: {
     convertToWord() {
       if (this.number !== null) {
-        this.numberInWord = numberConverterToWord(parseInt(this.number, 10));
+        this.numberInWord = convertion.numberToWords(parseInt(this.number, 10));
       }
     },
   },
