@@ -1,10 +1,12 @@
 <template>
-  <section>
+  <form class="card" @submit.prevent="convertToWord">
     <h1>{{ msg }}</h1>
     <input type="number" v-model="number" placeholder="Enter your number here" required @click="clearFields"/>
-    <button @click="convertToWord">Convert</button>
-    <p>{{ "Your number in word(s): " + numberInWord }}</p>
-  </section>
+    <button type="submit">Convert</button>
+    <div class="text">
+      <p>{{ "Your number in word(s): " + numberInWord }}</p>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -38,23 +40,40 @@ export default {
 </script>
 
 <style scoped>
-section {
-  font-family: 'Courier New', Courier, monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 500px;
-}
 input{
     width: 80%;
     padding: 15px 22px;
     margin: 10px 5px;
     box-sizing: border-box;
 }
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 450px;
+    height: 450px;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid black;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+    text-align: left;
+}
+p {
+  max-width: 80%;
+}
+.text{
+  width: 80%;
+  text-align: left;
+}
 button{
   color: #494949 !important;
   text-transform: uppercase;
   background: #ffffff;
+  width: 80%;
+  height: 60px;
   margin-top: 20px;
   padding: 20px;
   border: 4px solid #494949 !important;
