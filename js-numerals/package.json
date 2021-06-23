@@ -42,9 +42,8 @@
     "rules": {
       "import/prefer-default-export": "off",
       "no-trailing-whitespace": 0,
-      "no-restricted-syntax": ["ForInStatement", "ForOfStatement", "WithStatement"],
-      "max-len": "off",
-      "allowTernary": true
+      "no-restricted-syntax": [ 0 ],
+      "max-len": "off"
     },
     "overrides": [
       {
