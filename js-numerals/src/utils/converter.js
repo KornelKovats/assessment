@@ -3,8 +3,8 @@ import { constants } from './constants';
 export const convertion = {
   numberToWords(number) {
     let word = '';
-    const absNumber = Math.abs(number);
-    if (number === 0) {
+    const absNumber = parseInt(Math.abs(number), 10);
+    if (parseInt(number, 10) === 0) {
       return 'zero';
     }
     if (number.toString().length === 4) {

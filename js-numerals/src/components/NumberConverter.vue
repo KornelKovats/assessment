@@ -28,7 +28,7 @@ export default {
   methods: {
     convertToWord() {
       if (this.number !== null) {
-        this.numberInWord = convertion.numberToWords(parseInt(this.number, 10));
+        this.numberInWord = convertion.numberToWords(this.number, 10);
       }
     },
     clearFields() {
