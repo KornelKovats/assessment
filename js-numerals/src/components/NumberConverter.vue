@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>{{ msg }}</h1>
-    <input type="number" v-model="number" placeholder="Enter your number here" required @click="clearString"/>
+    <input type="number" v-model="number" placeholder="Enter your number here" required @click="clearFields"/>
     <button @click="convertToWord">Convert</button>
     <p>{{ "Your number in word(s): " + numberInWord }}</p>
   </section>
@@ -29,9 +29,9 @@ export default {
         this.numberInWord = convertion.numberToWords(parseInt(this.number, 10));
       }
     },
-    clearString() {
+    clearFields() {
       this.numberInWord = '';
-      this.number = 0;
+      this.number = null;
     },
   },
 };
@@ -43,6 +43,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 500px;
 }
 input{
     width: 80%;
