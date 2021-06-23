@@ -39,7 +39,12 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {},
+    "rules": {
+      "import/prefer-default-export": "off",
+      "no-trailing-whitespace": 0,
+      "no-restricted-syntax": ["ForInStatement", "ForOfStatement", "WithStatement"],
+      "max-len": "off" 
+    },
     "overrides": [
       {
         "files": [
