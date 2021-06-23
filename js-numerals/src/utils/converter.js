@@ -19,12 +19,12 @@ export const convertion = {
       if (numberToConvert === number && numberToConvert < 100) {
         return word;
       }
-      if (this.getRatio(number, numberToConvert) < 1) {
+      if (number < numberToConvert) {
         smallerNumber = number;
         smallerNumberWord = word;
         remainder = this.getRemainder(numberToConvert, smallerNumber);
       }
-      if (this.getRatio(number, numberToConvert) > 1) break;
+      if (number > numberToConvert) break;
     }
 
     if (this.betweenTwentyAndHoundred(numberToConvert)) {
@@ -60,9 +60,6 @@ export const convertion = {
       return `${houndreds} houndred and ${this.convertNumberToWord(remainder)}`;
     }
     return this.convertNumberToWord(number);
-  },
-  getRatio(numerator, denominator) {
-    return numerator / denominator;
   },
   greaterThanHoundred(number) {
     return number > 99;

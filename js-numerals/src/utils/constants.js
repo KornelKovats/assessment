@@ -26,7 +26,7 @@ export const constants = {
   seventy: 70,
   eighty: 80,
   ninety: 90,
-  houndred: 100,
+  hundred: 100,
   thousand: 1000,
   million: 1000000,
   billion: 1000000000,

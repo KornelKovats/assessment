@@ -32,12 +32,12 @@ describe('NumberConverter.vue', () => {
     expect(convertion.numberToWords(90)).toMatch('ninety');
   });
   it('Check for whole three digits', () =>{
-    expect(convertion.numberToWords(100)).toMatch('one houndred');
-    expect(convertion.numberToWords(200)).toMatch('two houndred');
-    expect(convertion.numberToWords(300)).toMatch('three houndred');
+    expect(convertion.numberToWords(100)).toMatch('one hundred');
+    expect(convertion.numberToWords(200)).toMatch('two hundred');
+    expect(convertion.numberToWords(300)).toMatch('three hundred');
   });
   it('check for bug', () =>{
-    expect(convertion.numberToWords(10300)).toMatch('ten thousand three houndred');
-    expect(convertion.numberToWords(1300420)).toMatch('one million three houndred thousand four houndred and twenty');
+    expect(convertion.numberToWords(10300)).toMatch('ten thousand three hundred');
+    expect(convertion.numberToWords(1300420)).toMatch('one million three hundred thousand four hundred and twenty');
   });
 });
