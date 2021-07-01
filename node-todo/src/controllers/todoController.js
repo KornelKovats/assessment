@@ -27,5 +27,14 @@ export const todoController = {
     } catch (error) {
       next(error);
     }
+  },
+  async insert(req, res, next){
+    const { body } = req;
+    try {
+      let data = await todoService.insertNew(body);
+      res.status(StatusCodes.OK).json(data);
+    } catch (error) {
+      next(error);
+    }
   }
 };

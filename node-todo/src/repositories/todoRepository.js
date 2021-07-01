@@ -32,10 +32,31 @@ export const todoRepository = {
     }
   },
   async deleteOne(id) {
-    const todos = JSON.parse(await readFile(todoPath, 'utf-8'));
-    const index = todos.findIndex(element => element.id === id);
-    const deletedTodos = todos.filter(element => element.id !== id);
-    await writeFile(todoPath, JSON.stringify(deletedTodos, null, 2), 'utf-8');
-    return index === -1 ? 'failed' : 'deleted';
+    try {
+      const todos = JSON.parse(await readFile(todoPath, 'utf-8'));
+      const index = todos.findIndex(element => element.id === id);
+      const deletedTodos = todos.filter(element => element.id !== id);
+      await writeFile(todoPath, JSON.stringify(deletedTodos, null, 2), 'utf-8');
+      return index === -1 ? 'failed' : 'deleted';
+    } catch (error) {
+      throw {
+        status: StatusCodes.INTERNAL_SERVER_ERROR,
+        message: error.message,
+      };
+    }
+  },
+  async insertNew(newTodo) {
+    try {
+      const todos = JSON.parse(await readFile(todoPath, 'utf-8'));
+      const newTodoToInsert = newTodo;
+      todos.push(newTodoToInsert);
+      await writeFile(todoPath, JSON.stringify(todos, null, 2), 'utf-8');
+      return newTodoToInsert;
+    } catch (error) {
+      throw {
+        status: StatusCodes.INTERNAL_SERVER_ERROR,
+        message: error.message,
+      };
+    }
   },
 };
