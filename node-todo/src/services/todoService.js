@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { todoRepository } from '../repositories';
 import { StatusCodes } from 'http-status-codes';
 import { uuid } from 'uuidv4';
@@ -30,11 +31,15 @@ export const todoService = {
     }
   },
   async insertNew(body) {
-    const newId = uuid();
-    console.log(newId);
     if (isTodoValid(body)) {
+      if (!body.hasOwnProperty('priority')) {
+        body.priority = 3;
+      }
+      if (!body.hasOwnProperty('done')) {
+        body.done = false;
+      }
       const newTodo = await todoRepository.insertNew({
-        id: newId,
+        id: uuid(),
         ...body,
       });
       return newTodo;
@@ -44,5 +49,8 @@ export const todoService = {
         message: 'Wrong entity',
       };
     }
+  },
+  async removeFiveMinDoneTodo(id) {
+    setInterval(() => {}, 5 * 60 * 1000);
   },
 };
