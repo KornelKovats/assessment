@@ -4,4 +4,7 @@ export const todoService = {
   async getTodos() {
     return todoRepository.readAll();
   },
+  async getOneTodo(id){
+    return todoRepository.findOne(id);
+  }
 };

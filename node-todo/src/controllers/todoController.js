@@ -10,4 +10,13 @@ export const todoController = {
       next(error);
     }
   },
+  async getOneTodo(req, res, next){
+    const { id } = req.params;
+    try {
+      let data = await todoService.getOneTodo(id);
+      res.status(StatusCodes.OK).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
 };
