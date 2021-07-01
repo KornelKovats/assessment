@@ -10,5 +10,6 @@ router.use(express.json());
 router.get('/hello', helloController.get);
 router.get('/todos', todoController.getAll);
 router.get('/todos/:id', todoController.getOneTodo);
+router.delete('/todos/:id', todoController.deleteOne);
 
 export default router;

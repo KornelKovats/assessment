@@ -18,5 +18,14 @@ export const todoController = {
     } catch (error) {
       next(error);
     }
+  },
+  async deleteOne(req, res, next){
+    const { id } = req.params;
+    try {
+      let data = await todoService.deleteOne(id);
+      res.status(StatusCodes.OK).json(data);
+    } catch (error) {
+      next(error);
+    }
   }
 };

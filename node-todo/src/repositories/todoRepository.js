@@ -1,6 +1,6 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { readFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 import { StatusCodes } from 'http-status-codes';
 
 //Important!: should not use ReadFileSync. It blocks the thread.
@@ -13,7 +13,10 @@ export const todoRepository = {
     try {
       return JSON.parse(await readFile(todoPath, 'utf-8'));
     } catch (error) {
-      throw { status: StatusCodes.INTERNAL_SERVER_ERROR, message: error.message };
+      throw {
+        status: StatusCodes.INTERNAL_SERVER_ERROR,
+        message: error.message,
+      };
     }
   },
   async findOne(id) {
@@ -22,7 +25,17 @@ export const todoRepository = {
       const index = todos.findIndex(element => element.id === id);
       return todos[index];
     } catch (error) {
-      throw { status: StatusCodes.INTERNAL_SERVER_ERROR, message: error.message };
+      throw {
+        status: StatusCodes.INTERNAL_SERVER_ERROR,
+        message: error.message,
+      };
     }
+  },
+  async deleteOne(id) {
+    const todos = JSON.parse(await readFile(todoPath, 'utf-8'));
+    const index = todos.findIndex(element => element.id === id);
+    const deletedTodos = todos.filter(element => element.id !== id);
+    await writeFile(todoPath, JSON.stringify(deletedTodos, null, 2), 'utf-8');
+    return index === -1 ? 'failed' : 'deleted';
   },
 };
