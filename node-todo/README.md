@@ -6,7 +6,7 @@ GET all todos:
 curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos
 
 GET one todo:
-curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
 
 POST insert new todo:
 curl --header "Content-Type: application/json" \
@@ -18,12 +18,12 @@ PUT update todo:
 curl --header "Content-Type: application/json" \
   --request PUT \
   --data '{"text":"Update text"}' \
-  https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
 
 DELETE todo:
 curl --header "Content-Type: application/json" \
   --request DELETE \
-  https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
 
 
 ## Instructions
