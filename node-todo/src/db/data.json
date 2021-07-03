@@ -1,58 +1,61 @@
 [
   {
-    "id": "2",
-    "priority": 3,
-    "text": "need to clean the car",
-    "done": true
-  },
-  {
-    "id": "3",
-    "priority": 3,
-    "text": "need to clean the car",
-    "done": true
-  },
-  {},
-  {},
-  {
-    "text": "asd",
-    "priority": 4,
-    "done": false
-  },
-  {
-    "text": "asd",
-    "priority": 4
-  },
-  {
-    "text": "asd"
-  },
-  {
-    "text": "asdasd"
-  },
-  {
-    "text": "asdasd"
-  },
-  {
-    "text": "asdasd"
-  },
-  {
-    "id": "c5b7a9a6-6b5a-4d92-93e0-ae25aa94a297",
-    "text": "asdasd"
-  },
-  {
-    "id": "e50b27ff-f2c3-4acb-b6b3-61762d973fb5",
-    "text": "teszt",
-    "priority": 3,
-    "done": false
-  },
-  {
-    "id": "fa0b8158-b21d-46ba-81ca-a57ee2da5d56",
-    "text": "teszt2",
+    "id": "111c50d3-5320-4d33-a7d1-f093c1b43514",
+    "text": "asd ",
     "priority": 5,
     "done": false
   },
   {
-    "id": "86ceecdd-3c0e-4742-bba3-4a517f90633c",
-    "text": "teszt2",
+    "id": "a53f2b5e-6a8f-439b-a247-f52501b7222e",
+    "text": "asd3 ",
+    "priority": 5,
+    "done": false
+  },
+  {
+    "id": "2e8a09fa-6613-4035-8e70-8df6ff0e97b3",
+    "text": "houndred",
+    "priority": 5,
+    "done": false
+  },
+  {
+    "id": "814c9421-6806-406f-a0de-9045a77e300e",
+    "text": "houndred",
+    "priority": 5,
+    "done": false
+  },
+  {
+    "id": "71641d35-a297-40d3-9016-8772e0f2fc0c",
+    "text": "houndred",
+    "priority": 5,
+    "done": false
+  },
+  {
+    "id": "6c64038b-a788-45bf-99ef-0c7021d97c8a",
+    "text": "houndred",
+    "priority": 5,
+    "done": false
+  },
+  {
+    "id": "b5d72827-4543-42b6-a7ee-77604d33c742",
+    "text": "pannya",
+    "priority": 5,
+    "done": true
+  },
+  {
+    "id": "9f8ed31e-4616-4c10-a1b0-efd9233947fa",
+    "text": "pannya2",
+    "priority": 5,
+    "done": true
+  },
+  {
+    "id": "1511b6c4-52aa-4aaf-8bcd-7589f75a6a0f",
+    "text": "pannya2",
+    "priority": 5,
+    "done": true
+  },
+  {
+    "id": "ac8b8787-99c8-4011-b349-5b355bc28602",
+    "text": "pannya2",
     "priority": 5,
     "done": true
   }

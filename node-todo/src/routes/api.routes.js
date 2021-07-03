@@ -9,8 +9,8 @@ router.use(express.json());
 
 router.get('/hello', helloController.get);
 router.get('/todos', todoController.getAll);
-router.get('/todos/:id', todoController.getOneTodo);
-router.post('/todos', todoController.insert);
+router.get('/todos/:id', todoController.getOne);
+router.post('/todos', todoController.insertOne);
 router.delete('/todos/:id', todoController.deleteOne);
 
 export default router;

@@ -10,7 +10,7 @@ export const todoController = {
       next(error);
     }
   },
-  async getOneTodo(req, res, next){
+  async getOne(req, res, next) {
     const { id } = req.params;
     try {
       let data = await todoService.getOneTodo(id);
@@ -19,7 +19,7 @@ export const todoController = {
       next(error);
     }
   },
-  async deleteOne(req, res, next){
+  async deleteOne(req, res, next) {
     const { id } = req.params;
     try {
       let data = await todoService.deleteOne(id);
@@ -28,7 +28,7 @@ export const todoController = {
       next(error);
     }
   },
-  async insert(req, res, next){
+  async insertOne(req, res, next) {
     const { body } = req;
     try {
       let data = await todoService.insertNew(body);
@@ -36,5 +36,5 @@ export const todoController = {
     } catch (error) {
       next(error);
     }
-  }
+  },
 };

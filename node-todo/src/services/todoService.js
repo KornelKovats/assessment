@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import { uuid } from 'uuidv4';
 import { isTodoValid } from '../models/todoValidation';
 
-export const todoService = {
+export const todoService = { 
   async getTodos() {
     return await todoRepository.readAll();
   },
@@ -31,6 +31,7 @@ export const todoService = {
     }
   },
   async insertNew(body) {
+    const id = uuid();
     if (isTodoValid(body)) {
       if (!body.hasOwnProperty('priority')) {
         body.priority = 3;
@@ -39,9 +40,14 @@ export const todoService = {
         body.done = false;
       }
       const newTodo = await todoRepository.insertNew({
-        id: uuid(),
+        id,
         ...body,
       });
+      if (body.done === true) {
+        setTimeout(async () => {
+          await todoRepository.deleteOne(id);
+        }, 5 * 60 * 1000);
+      }
       return newTodo;
     } else {
       throw {
@@ -49,8 +55,5 @@ export const todoService = {
         message: 'Wrong entity',
       };
     }
-  },
-  async removeFiveMinDoneTodo(id) {
-    setInterval(() => {}, 5 * 60 * 1000);
   },
 };
