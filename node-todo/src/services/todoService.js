@@ -64,7 +64,6 @@ export const todoService = {
           id,
           ...body,
         });
-        //console.log(body.done);
         if (body.done === true) {
           setTimeout(async () => {
             await todoRepository.deleteOne(id);
