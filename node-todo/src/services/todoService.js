@@ -1,4 +1,3 @@
-/* eslint-disable no-prototype-builtins */
 import { todoRepository } from '../repositories';
 import { StatusCodes } from 'http-status-codes';
 import { uuid } from 'uuidv4';
@@ -33,10 +32,10 @@ export const todoService = {
   async insertNew(body) {
     const id = uuid();
     if (isTodoValid(body)) {
-      if (!body.hasOwnProperty('priority')) {
+      if (!Object.prototype.hasOwnProperty.call(body, 'priority')) {
         body.priority = 3;
       }
-      if (!body.hasOwnProperty('done')) {
+      if (!Object.prototype.hasOwnProperty.call(body, 'done')) {
         body.done = false;
       }
       const newTodo = await todoRepository.insertNew({
