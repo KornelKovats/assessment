@@ -58,5 +58,22 @@ export const todoRepository = {
         message: error.message,
       };
     }
-  }
+  },
+  async updateOne(todoThatNeedsUpdate) {
+    try {
+      const { id } = todoThatNeedsUpdate;
+      const todos = JSON.parse(await readFile(todoPath, 'utf-8'));
+      const index = todos.findIndex(element => element.id === id);
+      for (const [key, value] of Object.entries(todoThatNeedsUpdate)) {
+        todos[index][`${key}`] = value;
+      }
+      await writeFile(todoPath, JSON.stringify(todos, null, 2));
+      return todos[index];
+    } catch (error) {
+      throw {
+        status: StatusCodes.INTERNAL_SERVER_ERROR,
+        message: error.message,
+      };
+    }
+  },
 };

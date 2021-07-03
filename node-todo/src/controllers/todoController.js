@@ -37,4 +37,14 @@ export const todoController = {
       next(error);
     }
   },
+  async updateOne(req, res, next){
+    const { body } = req;
+    const { id } = req.params;
+    try {
+      let data = await todoService.updateOne(id, body);
+      res.status(StatusCodes.OK).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
 };

@@ -2,9 +2,9 @@
 import { todoRepository } from '../repositories';
 import { StatusCodes } from 'http-status-codes';
 import { uuid } from 'uuidv4';
-import { isTodoValid } from '../models/todoValidation';
+import { isTodoValid, isUpdateTodoValid } from '../models/todoValidation';
 
-export const todoService = { 
+export const todoService = {
   async getTodos() {
     return await todoRepository.readAll();
   },
@@ -53,6 +53,34 @@ export const todoService = {
       throw {
         status: StatusCodes.UNPROCESSABLE_ENTITY,
         message: 'Wrong entity',
+      };
+    }
+  },
+  async updateOne(id, body) {
+    const todo = await todoRepository.findOne(id);
+    if (todo !== undefined) {
+      if (isUpdateTodoValid(body)) {
+        const updatedTodo = await todoRepository.updateOne({
+          id,
+          ...body,
+        });
+        //console.log(body.done);
+        if (body.done === true) {
+          setTimeout(async () => {
+            await todoRepository.deleteOne(id);
+          }, 5 * 60 * 1000);
+        }
+        return updatedTodo;
+      } else {
+        throw {
+          status: StatusCodes.UNPROCESSABLE_ENTITY,
+          message: 'Wrong entity',
+        };
+      }
+    } else {
+      throw {
+        status: StatusCodes.NOT_FOUND,
+        message: 'No data with that id',
       };
     }
   },
