@@ -1,4 +1,30 @@
-# NodeJS Developer - Exercise 1
+# NodeJS Developer - Exercise 1 -
+
+URL: https://kornelkovats-todo-app.azurewebsites.net
+
+GET all todos: 
+curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos
+
+GET one todo:
+curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+
+POST insert new todo:
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"text":"Need to clean the car"}' \
+  https://kornelkovats-todo-app.azurewebsites.net/todos
+
+PUT update todo:
+curl --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{"text":"Update text"}' \
+  https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+
+DELETE todo:
+curl --header "Content-Type: application/json" \
+  --request DELETE \
+  https://kornelkovats-todo-app.azurewebsites.net/todos/<id>
+
 
 ## Instructions
 

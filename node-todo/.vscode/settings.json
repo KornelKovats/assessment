@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/cc69603a-7ac7-4cb7-95c0-434051e74873/resourceGroups/appsvc_linux_centralus_basic2/providers/Microsoft.Web/sites/kornelkovats-todo-app",
+    "appService.deploySubpath": "."
+}
