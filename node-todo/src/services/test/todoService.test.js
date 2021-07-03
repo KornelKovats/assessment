@@ -1,0 +1,103 @@
+import { todoRepository } from '../../repositories';
+import { todoService } from '../todoService';
+import { jest } from '@jest/globals';
+
+const database = [
+  {
+    id: '111c50d3-5320-4d33-a7d1-f093c1b43514',
+    text: 'test1',
+    priority: 1,
+    done: false,
+  },
+  {
+    id: 'a53f2b5e-6a8f-439b-a247-f52501b7222e',
+    text: 'test2',
+    priority: 5,
+    done: true,
+  },
+];
+
+test('get All Todos', async () => {
+  let spyReadAllTodo = jest.spyOn(todoRepository, 'readAll');
+  spyReadAllTodo.mockReturnValue(database);
+  let result = await todoService.getTodos();
+  expect(result).toEqual(database);
+});
+
+test('get one Todo', async () => {
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(database[0]);
+  let result = await todoService.getOneTodo(
+    '111c50d3-5320-4d33-a7d1-f093c1b43514'
+  );
+  expect(result).toEqual(database[0]);
+});
+test('get one Todo with wrong id', async () => {
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(undefined);
+  try {
+    await todoService.getOneTodo('1234');
+  } catch (error) {
+    expect(error.message).toBe('No data with that id');
+  }
+});
+test('delete a Todo with existing id', async () => {
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'deleteOne');
+  spyGetOneTodo.mockReturnValue('deleted');
+  let result = await todoService.deleteOne(
+    '111c50d3-5320-4d33-a7d1-f093c1b43514'
+  );
+  expect(result).toStrictEqual({});
+});
+
+test('delete a Todo with non-existing id', async () => {
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'deleteOne');
+  spyGetOneTodo.mockReturnValue('failed');
+  try {
+    await todoService.deleteOne('1234');
+  } catch (error) {
+    expect(error.message).toBe('No data with that id');
+  }
+});
+test('insert new Todo with proper entities', async () => {
+  let expectedNewTodo = {
+    id: 'a53f2b5e-6a8f-439b-a247-f52501b7222e',
+    text: 'test2',
+    priority: 5,
+    done: true,
+  };
+  let spyInsertNewTodod = jest.spyOn(todoRepository, 'insertNew');
+  spyInsertNewTodod.mockReturnValue(expectedNewTodo);
+  expect(expectedNewTodo).toStrictEqual(database[1]);
+});
+test('insert new Todo with wrong entity:missing text', async () => {
+  let expectedNewTodo = {
+    priority: 5,
+    done: true,
+  };
+  try {
+    await todoService.insertNew(expectedNewTodo);
+  } catch (error) {
+    expect(error.message).toBe('Wrong entity');
+  }
+});
+test('insert new Todo with wrong entity:priority is 0', async () => {
+  let expectedBodyTodo = {
+    text: 'asd',
+    priority: 0,
+    done: true,
+  };
+  let expectedNewTodo = {
+    id: '111c50d3-5320-4d33-a7d1-f093c1b43514',
+    text: 'asd',
+    priority: 0,
+    done: true,
+  };
+  let sypInsertNewTodo = jest.spyOn(todoRepository, 'insertNew');
+  sypInsertNewTodo.mockReturnValue(expectedNewTodo);
+  try {
+    await todoService.insertNew(expectedBodyTodo);
+  } catch (error) {
+    expect(error.message).toBe('Wrong entity');
+  }
+});

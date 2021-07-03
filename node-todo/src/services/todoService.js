@@ -81,5 +81,5 @@ export const todoService = {
         message: 'No data with that id',
       };
     }
-  },
+  }
 };

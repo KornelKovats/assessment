@@ -24,39 +24,21 @@
     "done": false
   },
   {
-    "id": "6c64038b-a788-45bf-99ef-0c7021d97c8a",
-    "text": "houndred",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "b5d72827-4543-42b6-a7ee-77604d33c742",
-    "text": "pannya",
-    "priority": 5,
-    "done": true
-  },
-  {
-    "id": "9f8ed31e-4616-4c10-a1b0-efd9233947fa",
-    "text": "pannya2",
-    "priority": 5,
-    "done": true
-  },
-  {
-    "id": "1511b6c4-52aa-4aaf-8bcd-7589f75a6a0f",
-    "text": "pannya2",
-    "priority": 5,
-    "done": true
-  },
-  {
     "id": "92fcebe7-8dee-4977-8031-70fc412b9a84",
     "text": "test",
     "priority": 5,
     "done": false
   },
   {
-    "id": "489fbb61-59d5-46d4-b7a6-127bed61662b",
+    "id": "9b99f211-2f26-4064-945a-a4591131974f",
     "text": "test2",
-    "priority": 3,
-    "done": false
+    "done": true,
+    "priority": 3
+  },
+  {
+    "id": "9d4821fa-ab31-4b78-bd04-2870b989f83e",
+    "text": "test2",
+    "done": true,
+    "priority": 3
   }
 ]
