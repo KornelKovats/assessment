@@ -101,3 +101,93 @@ test('insert new Todo with wrong entity:priority is 0', async () => {
     expect(error.message).toBe('Wrong entity');
   }
 });
+test('update new Todo with wrong id', async () => {
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(undefined);
+  try {
+    await todoService.updateOne('1234');
+  } catch (error) {
+    expect(error.message).toBe('No data with that id');
+  }
+});
+test('update new Todo with valid body', async () => {
+  let updatedTodo = {
+    id: database[0].id,
+    text: 'Needs to clean house',
+    priority: 5,
+    done: true,
+  };
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(database[0]);
+  let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
+  spyUpdateOneTodo.mockReturnValue(updatedTodo);
+  let result = await todoService.updateOne(database[0].id, {
+    text: 'Needs to clean house',
+    priority: 5,
+    done: true,
+  });
+  expect(result).toBe(updatedTodo);
+});
+test('update new Todo with non-valid body: missing text', async () => {
+  let updatedTodo = {
+    id: database[0].id,
+    text: 'Needs to clean house',
+    priority: 0,
+    done: true,
+  };
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(database[0]);
+  let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
+  spyUpdateOneTodo.mockReturnValue(updatedTodo);
+  try {
+    await todoService.updateOne(database[0].id, {
+      priority: 5,
+      done: true,
+    });
+  } catch (error) {
+    expect(error.message).toEqual('Wrong entity');
+  }
+});
+test('update new Todo with non-valid body: priority out of range', async () => {
+  let updatedTodo = {
+    id: database[0].id,
+    text: 'Needs to clean house',
+    priority: 0,
+    done: true,
+  };
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(database[0]);
+  let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
+  spyUpdateOneTodo.mockReturnValue(updatedTodo);
+  try {
+    await todoService.updateOne(database[0].id, {
+      text: 'Needs to clean house',
+      priority: 6,
+      done: true,
+    });
+  } catch (error) {
+    expect(error.message).toEqual('Wrong entity');
+  }
+});
+test('update new Todo with non-valid body: added extra property', async () => {
+    let updatedTodo = {
+      id: database[0].id,
+      text: 'Needs to clean house',
+      priority: 5,
+      done: true,
+    };
+    let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+    spyGetOneTodo.mockReturnValue(database[0]);
+    let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
+    spyUpdateOneTodo.mockReturnValue(updatedTodo);
+    try {
+        await todoService.updateOne(database[0].id, {
+            text: 'Needs to clean house',
+            priority: 5,
+            done: true,
+            mark: "none"
+          });
+      } catch (error) {
+        expect(error.message).toEqual('Wrong entity');
+      }
+  });
