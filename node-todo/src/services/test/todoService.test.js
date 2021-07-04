@@ -2,6 +2,8 @@ import { todoRepository } from '../../repositories';
 import { todoService } from '../todoService';
 import { jest } from '@jest/globals';
 
+jest.useFakeTimers();
+
 const database = [
   {
     id: '111c50d3-5320-4d33-a7d1-f093c1b43514',
@@ -60,6 +62,11 @@ test('delete a Todo with non-existing id', async () => {
   }
 });
 test('insert new Todo with proper entities', async () => {
+  let insertValue = {
+    text: 'test2',
+    priority: 5,
+    done: true,
+  };
   let expectedNewTodo = {
     id: 'a53f2b5e-6a8f-439b-a247-f52501b7222e',
     text: 'test2',
@@ -68,7 +75,8 @@ test('insert new Todo with proper entities', async () => {
   };
   let spyInsertNewTodod = jest.spyOn(todoRepository, 'insertNew');
   spyInsertNewTodod.mockReturnValue(expectedNewTodo);
-  expect(expectedNewTodo).toStrictEqual(database[1]);
+  let result = await todoService.insertNew(insertValue);
+  expect(result).toStrictEqual(database[1]);
 });
 test('insert new Todo with wrong entity:missing text', async () => {
   let expectedNewTodo = {
@@ -170,24 +178,24 @@ test('update new Todo with non-valid body: priority out of range', async () => {
   }
 });
 test('update new Todo with non-valid body: added extra property', async () => {
-    let updatedTodo = {
-      id: database[0].id,
+  let updatedTodo = {
+    id: database[0].id,
+    text: 'Needs to clean house',
+    priority: 5,
+    done: true,
+  };
+  let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
+  spyGetOneTodo.mockReturnValue(database[0]);
+  let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
+  spyUpdateOneTodo.mockReturnValue(updatedTodo);
+  try {
+    await todoService.updateOne(database[0].id, {
       text: 'Needs to clean house',
       priority: 5,
       done: true,
-    };
-    let spyGetOneTodo = jest.spyOn(todoRepository, 'findOne');
-    spyGetOneTodo.mockReturnValue(database[0]);
-    let spyUpdateOneTodo = jest.spyOn(todoRepository, 'updateOne');
-    spyUpdateOneTodo.mockReturnValue(updatedTodo);
-    try {
-        await todoService.updateOne(database[0].id, {
-            text: 'Needs to clean house',
-            priority: 5,
-            done: true,
-            mark: "none"
-          });
-      } catch (error) {
-        expect(error.message).toEqual('Wrong entity');
-      }
-  });
+      mark: 'none',
+    });
+  } catch (error) {
+    expect(error.message).toEqual('Wrong entity');
+  }
+});
