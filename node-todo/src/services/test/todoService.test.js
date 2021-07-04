@@ -7,13 +7,13 @@ jest.useFakeTimers();
 const database = [
   {
     id: '111c50d3-5320-4d33-a7d1-f093c1b43514',
-    text: 'test1',
+    text: 'testone',
     priority: 1,
     done: false,
   },
   {
     id: 'a53f2b5e-6a8f-439b-a247-f52501b7222e',
-    text: 'test2',
+    text: 'testtwo',
     priority: 5,
     done: true,
   },
@@ -63,13 +63,13 @@ test('delete a Todo with non-existing id', async () => {
 });
 test('insert new Todo with proper entities', async () => {
   let insertValue = {
-    text: 'test2',
+    text: 'testtwo',
     priority: 5,
     done: true,
   };
   let expectedNewTodo = {
     id: 'a53f2b5e-6a8f-439b-a247-f52501b7222e',
-    text: 'test2',
+    text: 'testtwo',
     priority: 5,
     done: true,
   };
@@ -80,6 +80,18 @@ test('insert new Todo with proper entities', async () => {
 });
 test('insert new Todo with wrong entity:missing text', async () => {
   let expectedNewTodo = {
+    priority: 5,
+    done: true,
+  };
+  try {
+    await todoService.insertNew(expectedNewTodo);
+  } catch (error) {
+    expect(error.message).toBe('Wrong entity');
+  }
+});
+test('insert new Todo with wrong entity:not english letters', async () => {
+  let expectedNewTodo = {
+    text: 'álmodom szépeket',
     priority: 5,
     done: true,
   };

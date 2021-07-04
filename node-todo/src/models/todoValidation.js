@@ -7,7 +7,7 @@ range(ajv);
 const todoSchemaValidation = {
   type: 'object',
   properties: {
-    text: { type: 'string', regexp: '/^[a-zA-Z]+$/' },
+    text: { type: 'string', regexp: '/^[a-zA-Z ]*$/' },
     priority: { type: 'integer', range: [1, 5], nullable: true },
     done: { type: 'boolean', nullable: true },
   },
@@ -17,7 +17,7 @@ const todoSchemaValidation = {
 const todoSchemaUpdateValidation = {
   type: 'object',
   properties: {
-    text: { type: 'string', nullable: true, regexp: '/^[a-zA-Z]+$/' },
+    text: { type: 'string', nullable: true, regexp: '/^[a-zA-Z ]*$/' },
     priority: { type: 'integer', range: [1, 5], nullable: true },
     done: { type: 'boolean', nullable: true },
   },

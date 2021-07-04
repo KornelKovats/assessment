@@ -1,50 +1,14 @@
 [
   {
-    "id": "111c50d3-5320-4d33-a7d1-f093c1b43514",
-    "text": "asd ",
+    "id": "a0174057-01db-4b52-bdf1-b669afd4fd1f",
+    "text": "Need to finish the todo app",
     "priority": 5,
     "done": false
   },
   {
-    "id": "a53f2b5e-6a8f-439b-a247-f52501b7222e",
-    "text": "asd3 ",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "2e8a09fa-6613-4035-8e70-8df6ff0e97b3",
-    "text": "QQQQQQQQ",
-    "priority": 1,
-    "done": false
-  },
-  {
-    "id": "71641d35-a297-40d3-9016-8772e0f2fc0c",
-    "text": "NEEEDTTODELETE",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "92fcebe7-8dee-4977-8031-70fc412b9a84",
-    "text": "test",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "e2a2b486-50d3-44ef-8c4b-389ef1b82fa3",
-    "text": "asd",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "34fff503-c7c5-4f85-9604-61d31781ad73",
-    "text": "ASDADS",
-    "priority": 5,
-    "done": false
-  },
-  {
-    "id": "ef20c80d-c22d-46f5-93f8-435e036b643d",
-    "text": "asdasdasd",
-    "priority": 5,
+    "id": "c7175f3a-4b8f-450d-9a88-9928607804cd",
+    "text": "Send email to Eniko and DiNa",
+    "priority": 3,
     "done": false
   }
 ]
