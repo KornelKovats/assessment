@@ -1,36 +1,4 @@
-# NodeJS Developer - Exercise 1 -
-
-URL: https://kornelkovats-todo-app.azurewebsites.net
-
-GET all todos: 
-curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos
-
-GET one todo:
-curl -H "Content-Type: application/json" -X GET https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
-
-POST insert new todo:
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"text":"Need to clean the car"}' \
-  https://kornelkovats-todo-app.azurewebsites.net/todos
-
-PUT update todo:
-curl --header "Content-Type: application/json" \
-  --request PUT \
-  --data '{"text":"Update text"}' \
-  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
-
-DELETE todo:
-curl --header "Content-Type: application/json" \
-  --request DELETE \
-  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
-
-
-## Instructions
-
-- Fork this project.
-- Write tests.
-- Commit the important milestones and not just the final result.
+# NodeJS Developer - Exercise 1 
 
 ## Exercise description
 
@@ -65,8 +33,41 @@ Updates the given fields in the todo. Returns the new todo object.
 
 Removes a todo from the collection.
 
-## Tasks
+# App
+```
+npm install
+npm start
+```
+Test:
+```
+npm run test
+```
+## Deployed Version
 
-1. Save all of the todos in a JSON file, if any modification happens. Load the collection from this file when the server restarts
-2. Remove todos that is done for 5 minutes
-3. Create unit tests for the API
+url: https://kornelkovats-todo-app.azurewebsites.net/todos
+
+GET all todos: 
+curl -H "Content-Type: application/json" \ 
+  -X GET https://kornelkovats-todo-app.azurewebsites.net/todos
+
+GET one todo:
+curl -H "Content-Type: application/json" \ 
+  -X GET https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
+
+POST insert new todo:
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"text":"Need to clean the car"}' \
+  https://kornelkovats-todo-app.azurewebsites.net/todos
+
+PUT update todo:
+curl --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{"text":"Update text"}' \
+  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
+
+DELETE todo:
+curl --header "Content-Type: application/json" \
+  --request DELETE \
+  https://kornelkovats-todo-app.azurewebsites.net/todos/theidhere
+
